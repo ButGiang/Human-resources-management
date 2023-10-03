@@ -20,14 +20,14 @@ return new class extends Migration
             $table->integer('CCCD')->unique();
             $table->string('email', 100)->unique();
             $table->string('address', 255);
-            $table->integer('phone')->length(11);
+            $table->string('phone', 11);
             $table->string('avatar', 255);
             $table->date('recuit_day');
             $table->integer('active')->length(1);
             $table->timestamps();
-            $table->integer('department_id')->unsigned();
-            $table->integer('position_id')->unsigned();
-            $table->integer('degree_id')->unsigned();
+            $table->integer('department_id')->nullable();
+            $table->integer('position_id')->nullable();
+            $table->integer('degree_id')->nullable();
         });
 
         Schema::table('staffs', function ($table) {    

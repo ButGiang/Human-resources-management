@@ -7,13 +7,13 @@
             
             <ul class="mt-12">
                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">
-                    <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                    <a href="/" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                         <i class="fas fa-home"></i>
                         <span class="text-sm ml-2">Dashboard</span>
                     </a>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
-                    <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                    <a href="/staff" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                         <i class="fas fa-users"></i>
                         <span class="text-sm ml-2">Nhân viên</span>
                     </a>

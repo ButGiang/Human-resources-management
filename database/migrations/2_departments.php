@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('name', 100)->unique();
             $table->string('describe', 255);
             $table->timestamps();
+            $table->integer('manager_id');
+        });
+
+        Schema::table('departments', function ($table) {    
+            $table->foreign('manager_id')->references('id')->on('staffs')->onDelete('cascade')->onUpdate('cascade');    
         });
     }
 

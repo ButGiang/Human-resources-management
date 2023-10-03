@@ -7,7 +7,9 @@
 <body class="flex h-screen">
   @include('sidebar')
 
-  <div class="flex-grow overflow-y-auto">
+  <div class="flex-grow overflow-y-auto bg-gray-50">
+    @include('alert')
+
     @yield('content')
   </div>
 
