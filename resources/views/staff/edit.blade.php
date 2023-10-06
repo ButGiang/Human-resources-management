@@ -29,11 +29,16 @@
 
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Giới tính</label>
-                    <select name="gender" class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm">
-                        <option value="" disabled selected>Chọn giới tính</option>
-                        <option value="1">Nam</option>
-                        <option value="0">Nữ</option>
-                    </select>
+                    <div class="mt-3">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="1" class="form-radio border-gray-300 shadow-sm" {{ $staff->gender == 1 ? 'checked' : '' }}>
+                            <span class="ml-2">Nam</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" name="gender" value="0" class="form-radio border-gray-300 shadow-sm" {{ $staff->gender == 0 ? 'checked' : '' }}>
+                            <span class="ml-2">Nữ</span>
+                        </label>
+                    </div>
                 </div>
             </div>
 

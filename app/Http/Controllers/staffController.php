@@ -43,7 +43,7 @@ class staffController extends Controller
 
     public function edit(staffs $id) {
         return view('Staff.edit', [
-            'title' => 'Chỉnh sủa thông tin nhân viên',
+            'title' => 'Chỉnh sửa thông tin nhân viên',
             'staff' => $id
         ]);
     }
@@ -63,5 +63,14 @@ class staffController extends Controller
         $this->staff_service->updateStatus($id);
 
         return redirect()->route('staffList');
+    }
+
+    public function search(Request $request) {
+        $result = $this->staff_service->search($request);
+
+        return view('staff.list',[
+            'title' => 'Danh sách nhân viên',
+            'staffs' => $result
+        ]);
     }
 }

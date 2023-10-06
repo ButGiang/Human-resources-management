@@ -19,13 +19,19 @@
                     </a>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
+                    <a href="/insurance" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                        <i class="fas fa-user-shield"></i>
+                        <span class="text-sm ml-2">Bảo hiểm</span>
+                    </a>
+                </li>
+                <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
                     <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                         <i class="fas fa-building"></i>
                         <span class="text-sm ml-2">Phòng ban & chức vụ</span>
                     </a>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
-                    <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white" >
+                    <a href="/achievement" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white" >
                         <i class="fas fa-trophy"></i>
                         <span class="text-sm ml-2">Khen thưởng</span>
                     </a>
