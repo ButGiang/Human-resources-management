@@ -32,3 +32,23 @@ body {
 .bg-pink {
   background-color: #FF33CC;
 }
+
+.bg-red {
+  background-color: #EE0000;
+}
+
+.bg-yellow {
+  background-color: #FFCC00;
+}
+
+.bg-deepblue {
+  background-color: #00BFFF;
+}
+
+.bg-skyblue {
+  background-color: #4169E1;
+}
+
+.left-13 {
+  left: 5.5rem;
+}

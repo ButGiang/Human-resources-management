@@ -9,7 +9,7 @@ class achievement extends Model
 {
     use HasFactory;
     protected $table = "achievement";
-    protected $primaryKey = 'achievement_id ';
+    protected $primaryKey = 'achievement_id';
 
     protected $fillable = [
         'name',

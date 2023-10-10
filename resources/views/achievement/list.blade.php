@@ -49,23 +49,23 @@
                         <thead>
                             <tr>
                                 <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-green-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     ID
                                 </th>
                                 <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-green-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Họ & Tên
                                 </th>
                                 <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-green-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Tên thành tựu
                                 </th>
                                 <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-green-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Khen thưởng (đồng)
                                 </th>
                                 <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-green-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 </th>
                             </tr>
                         </thead>

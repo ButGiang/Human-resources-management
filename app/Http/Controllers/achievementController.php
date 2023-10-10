@@ -27,7 +27,7 @@ class achievementController extends Controller
 
     public function add() {
         return view('achievement.add', [
-            'title' => 'Thêm',
+            'title' => 'Khen thưởng-Thêm',
             'staffs' => staffs::orderBy('id', 'asc')->get(),
             'today' => Carbon::today()->format('Y-m-d')
         ]);
@@ -44,15 +44,17 @@ class achievementController extends Controller
         }
     }
 
-    public function edit(achievement $id) {
+    public function edit($achievement_id) {
+        $achievement = achievement::where('achievement_id', $achievement_id)->first();
         return view('achievement.edit', [
-            'title' => 'Chỉnh sửa',
-            'achievement' => $id
+            'title' => 'Khen thưởng-Chỉnh sửa',
+            'achievement' => $achievement
         ]);
     }
 
-    public function post_edit(Request $request, achievement $id) {
-        $result = $this->achievement_service->update($request, $id);
+    public function post_edit(Request $request, $achievement_id) {
+        $achievement = achievement::where('achievement_id', $achievement_id)->first();
+        $result = $this->achievement_service->update($request, $achievement);
         
         if($result) {
             return redirect()->route('achievementList');
@@ -60,5 +62,28 @@ class achievementController extends Controller
         else {
             return redirect()->back()->withInput();
         }
+    }
+
+    public function delete(Request $request) {
+        $result = $this->achievement_service->delete($request);
+
+        if($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công!'
+            ]);
+        }
+        return response()->json([
+            'error' => true
+        ]);
+    }
+
+    public function search(Request $request) {
+        $result = $this->achievement_service->search($request);
+
+        return view('achievement.list',[
+            'title' => 'Danh sách khen thưởng',
+            'achievements' => $result
+        ]);
     }
 }

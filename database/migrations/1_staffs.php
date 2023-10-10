@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address', 255);
             $table->string('phone', 11);
             $table->string('avatar', 255);
-            $table->date('recuit_day');
+            $table->date('recruit_day');
             $table->integer('active')->length(1);
             $table->timestamps();
             $table->integer('department_id')->nullable();

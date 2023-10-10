@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
-                    <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                    <a href="/department" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                         <i class="fas fa-building"></i>
                         <span class="text-sm ml-2">Phòng ban & chức vụ</span>
                     </a>
@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
-                    <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                    <a href="/discipline" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                         <i class="fas fa-exclamation-circle"></i>
                         <span class="text-sm ml-2">Kỷ luật</span>
                     </a>

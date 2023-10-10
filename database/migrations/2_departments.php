@@ -15,8 +15,9 @@ return new class extends Migration
             $table->increments('department_id');
             $table->string('name', 100)->unique();
             $table->string('describe', 255);
+            $table->integer('active')->length(1);
             $table->timestamps();
-            $table->integer('manager_id');
+            $table->integer('manager_id')->nullable();
         });
 
         Schema::table('departments', function ($table) {    
