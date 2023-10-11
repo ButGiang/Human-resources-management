@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('describe', 255);
             $table->integer('active')->length(1);
             $table->timestamps();
+<<<<<<< Updated upstream
             $table->integer('manager_id')->nullable();
+=======
+            $table->integer('manager_id')->unsigned();
+>>>>>>> Stashed changes
         });
 
         Schema::table('departments', function ($table) {    
