@@ -42,7 +42,18 @@ Route::prefix('department')->group(function() {
     Route::get('/updateStatus/{department_id}', [departmentController::class, 'updateStatus']);
     Route::post('/changeManager', [departmentController::class, 'changeManager']);
     Route::post('/search', [departmentController::class, 'search']);
-    Route::get('/detail/{department_id}', [departmentController::class, 'detail']);
+
+    Route::prefix('/detail/{department_id}')->group(function() {
+        Route::get('/', [departmentController::class, 'detail']);
+        Route::prefix('/staffList')->group(function() {
+            Route::get('/', [departmentController::class, 'staffList']);
+            Route::get('/add', [departmentController::class, 'addStaffToDep']);
+            Route::delete('/remove', [departmentController::class, 'removeStaffFromDep']);
+        });
+
+        Route::get('/position', [departmentController::class, 'positionList']);
+
+    });
 });
 
 

@@ -10,11 +10,13 @@
             </div>
             <div class="text-xl mt-4">Phòng ban: <span class="font-bold ">{{ $department->name }}</span></div>
             <div class="flex justify-center items-center mt-12">
-                <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 flex items-center">
+                <a href="/department/detail/{{ $department->department_id }}/staffList" 
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 flex items-center">
                     <i class="fas fa-user-tag mr-3"></i>
                     <p>Nhân viên thuộc phòng ban</p>
                 </a>
-                <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 flex items-center">
+                <a href="/department/detail/{{ $department->department_id }}/positionList" 
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 flex items-center">
                     <i class="fas fa-tag mr-3"></i>
                     <p>Các chức vụ của phòng ban</p>
                 </a>

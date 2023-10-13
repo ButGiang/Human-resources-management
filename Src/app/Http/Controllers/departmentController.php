@@ -89,12 +89,32 @@ class departmentController extends Controller
         return response('Cập nhật thành công!');
     }
 
+
     public function detail($department_id) {
         $department = department::where('department_id', $department_id)->first();
 
         return view('department.modal', [
             'title' => 'Phòng ban-Chi tiết',
             'department' => $department
+        ]);
+    }
+
+    public function staffList($department_id) {
+        $department = department::where('department_id', $department_id)->first();
+
+        return view('department.staffList.list', [
+            'title' => 'Phòng ban-Nhân viên',
+            'department' => $department
+        ]);
+    }
+
+    public function addStaffToDep($department_id) {
+        $staffs = staffs::whereNotIn('department_id', $department_id)->get();
+
+        return view('department.staffList.add', [
+            'title' => 'Phòng ban-Thêm NV',
+            'staffs' => $staffs,
+            'dep_id' => $department_id
         ]);
     }
 }

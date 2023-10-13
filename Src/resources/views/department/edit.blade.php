@@ -13,9 +13,8 @@
                     </div>
 
                     <div class="col-span-1 ml-2">
-                        <label class="block text-sm font-medium text-gray-700" for="staff">Trưởng phòng</label>
+                        <label class="block text-sm font-medium text-gray-700" for="staff">Chọn nhân viên</label>
                         <div class="flex items-center mt-3">
-                            <div class="min-w-[220px]">{{ $department->manager->first_name. ' '. $department->manager->last_name }}</div>
                             <div class="ml-7 relative">
                                 <div id="submenu-button" onclick="displaySubMenu()"
                                 class="bg-skyblue text-white py-1 px-2 rounded cursor-pointer">

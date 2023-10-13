@@ -33,7 +33,9 @@ class staffHelper {
             $html .= '
                 <tr>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">'. $staff->id .'</td>
-                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">'. $staff->avatar .'</td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm"> 
+                        <img src='. $staff->avatar .'alt="avatar" class="h-full w-full rounded-full">
+                    </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">'. $staff->first_name. ' '. $staff->last_name .'</td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">'. self::gender($staff->gender) .'</td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">'. $staff->department->name.'</td>
