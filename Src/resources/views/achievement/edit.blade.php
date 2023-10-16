@@ -9,12 +9,12 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Tên thành tựu</label>
                         <input type="text" name="name" 
-                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter name" value="{{ $achievement->name }}">
+                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" placeholder="Enter name" value="{{ $achievement->name }}">
                     </div>
 
-                    <div class="col-span-1">
+                    <div class="col-span-1 ml-3">
                         <label class="block text-sm font-medium text-gray-700" for="staff">thuộc về nhân viên</label>
-                        <div>{{ $achievement->staff->first_name. ' '. $achievement->staff->last_name }}</div>
+                        <div class="mt-3">{{ $achievement->staff->first_name. ' '. $achievement->staff->last_name }}</div>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Phần thưởng (đồng)</label>
                         <input type="text" name="reward" 
-                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter reward" value="{{ $achievement->reward }}">
+                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" placeholder="Enter reward" value="{{ $achievement->reward }}">
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Ngày</label>
                         <input type="date" name="date" 
-                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" 
+                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" 
                         value="{{ $achievement->date }}">
                     </div>
                 </div>

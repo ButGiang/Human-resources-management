@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 use App\Models\staffs;
 use App\Models\department;
+use App\Models\position;
+use App\Models\degree;
 
 use App\Http\Services\departmentService;
+
 
 class departmentController extends Controller
 {
@@ -109,12 +111,45 @@ class departmentController extends Controller
     }
 
     public function addStaffToDep($department_id) {
-        $staffs = staffs::whereNotIn('department_id', $department_id)->get();
+        $department = department::where('department_id', $department_id)->first();
+        $staffs = staffs::where('department_id', '<>', $department_id)->orWhereNull('department_id')->get();
+        $positions  = position::where('department_id', $department_id)->get();
+        $degrees = degree::orderBy('degree_id', 'asc')->get();
 
         return view('department.staffList.add', [
             'title' => 'Phòng ban-Thêm NV',
             'staffs' => $staffs,
-            'dep_id' => $department_id
+            'department' => $department,
+            'positions' => $positions,
+            'degrees' => $degrees
         ]);
+    }
+
+    public function post_addStaffToDep($department_id, Request $request) {
+        $result = $this->department_service->addStaffToDep($department_id, $request);
+
+        if($result) {
+            return redirect()->route('staffListOfDep', ['department_id' => $department_id]);
+        }
+        else {
+            return redirect()->back()->withInput();
+        }
+    }
+
+    public function removeStaffFromDep($department_id, $id) {
+        $result = $this->department_service->remove($id);
+
+        if($result) {
+            return redirect()->route('staffListOfDep', ['department_id' => $department_id]);
+        }
+        else {
+            return redirect()->back();
+        }
+    }
+
+    public function exportExcel($department_id) {
+        $staffs = staffs::select('id','first_name','last_name')->with('position', 'degree')->where('department_id', $department_id)->get();
+
+        $this->department_service->staffListExport($department_id, $staffs);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\achievement;
 use App\Models\staffs;
+use App\Helpers\messagesHelper;
 
 class achievementService {
     public function getAchievementList() {
@@ -21,7 +22,7 @@ class achievementService {
                 'date' => $request->input('date'),
                 'id' => $request->input('staff')
             ]);
-            $request->session()->flash('success', 'Thêm thành tựu mới thành công!');
+            $request->session()->flash('success', messagesHelper::$CREATE_SUCCESS);
         }
         catch(\exception $e) {
             $request->session()->flash('error', $e->getMessage());
@@ -39,7 +40,7 @@ class achievementService {
             $achievement->reward = $request->input('reward');
             $achievement->save();
 
-            $request->session()->flash('success', 'Cập nhật thành công');
+            $request->session()->flash('success', messagesHelper::$EDIT_SUCCESS);
         }
         catch(\exception $e) {
             $request->session()->flash('error', $e->getMessage());

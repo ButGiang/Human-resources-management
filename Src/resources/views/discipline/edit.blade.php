@@ -9,12 +9,12 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Lý do kỷ luật</label>
                         <input type="text" name="name" 
-                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter name" value="{{ $discipline->name }}">
+                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" placeholder="Enter name" value="{{ $discipline->name }}">
                     </div>
 
-                    <div class="col-span-1">
+                    <div class="col-span-1 ml-3">
                         <label class="block text-sm font-medium text-gray-700" for="staff">kỷ luật nhân viên</label>
-                        <div>{{ $discipline->staff->first_name. ' '. $discipline->staff->last_name }}</div>
+                        <div class="mt-3">{{ $discipline->staff->first_name. ' '. $discipline->staff->last_name }}</div>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Tiền phạt (đồng)</label>
                         <input type="text" name="reward" 
-                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter reward" value="{{ $discipline->punish }}">
+                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" placeholder="Enter reward" value="{{ $discipline->punish }}">
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Ngày</label>
                         <input type="date" name="date" 
-                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" 
+                        class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" 
                         value="{{ $discipline->date }}">
                     </div>
                 </div>

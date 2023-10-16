@@ -6,6 +6,7 @@ use \App\Http\Controllers\authController;
 use \App\Http\Controllers\homeController;
 use \App\Http\Controllers\staffController;
 use \App\Http\Controllers\departmentController;
+use \App\Http\Controllers\positionController;
 use \App\Http\Controllers\achievementController;
 use \App\Http\Controllers\disciplineController;
 
@@ -45,14 +46,24 @@ Route::prefix('department')->group(function() {
 
     Route::prefix('/detail/{department_id}')->group(function() {
         Route::get('/', [departmentController::class, 'detail']);
-        Route::prefix('/staffList')->group(function() {
-            Route::get('/', [departmentController::class, 'staffList']);
+
+        Route::prefix('/staffs')->group(function() {
+            Route::get('/', [departmentController::class, 'staffList'])->name('staffListOfDep');
             Route::get('/add', [departmentController::class, 'addStaffToDep']);
-            Route::delete('/remove', [departmentController::class, 'removeStaffFromDep']);
+            Route::post('/add', [departmentController::class, 'post_addStaffToDep']);
+            Route::get('/remove/{id}', [departmentController::class, 'removeStaffFromDep']);
+            Route::get('/exportExcel', [departmentController::class, 'exportExcel']);
         });
 
-        Route::get('/position', [departmentController::class, 'positionList']);
-
+        Route::prefix('/positions')->group(function() {
+            Route::get('/', [positionController::class, 'index'])->name('positionList');
+            Route::get('/add', [positionController::class, 'add']);
+            Route::post('/add', [positionController::class, 'post_add']);      
+            Route::get('/edit/{position_id}', [departmentController::class, 'edit']);
+            Route::post('/edit/{position_id}', [departmentController::class, 'post_edit']);
+            Route::get('/updateStatus/{position_id}', [positionController::class, 'updateStatus']);
+            Route::get('/exportExcel', [positionController::class, 'exportExcel']);
+        });
     });
 });
 

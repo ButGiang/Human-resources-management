@@ -52,3 +52,11 @@ body {
 .left-13 {
   left: 5.5rem;
 }
+
+.border-gray {
+  border: 1px solid gray;
+}
+
+.w-1_5 {
+  width: 20%;
+}

@@ -18,7 +18,7 @@
 
     // xóa 1 dòng trg database 
     function RemoveRow(id, url) {
-        if(confirm('Xóa danh mục này? hành động này không thể hoàn tác!')) {
+        if(confirm('{{ \App\Helpers\MessagesHelper::$DELETE_CONFIRM }}')) {
             $.ajax({
                 type: 'delete',
                 datatype: 'JSON',
@@ -31,7 +31,7 @@
                         location.reload()
                     }
                     else {
-                        alert('Có lỗi xảy ra! Vui lòng thử lại')
+                        alert('{{ \App\Helpers\MessagesHelper::$ERROR }}')
                     }
                 }
             })

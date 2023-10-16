@@ -2,7 +2,7 @@
 
 namespace App\Http\Services;
 
-use Illuminate\Support\Facades\Session;
+use App\Helpers\messagesHelper;
 
 use App\Models\staffs;
 
@@ -24,7 +24,7 @@ class staffService {
                 'address' => $request->input('address'),
                 'recruit_day' => $request->input('recruit_day'),
             ]);
-            $request->session()->flash('success', 'Thêm nhân viên mới thành công!');
+            $request->session()->flash('success', messagesHelper::$CREATE_SUCCESS);
         }
         catch(\exception $e) {
             $request->session()->flash('error', $e->getMessage());
@@ -46,7 +46,7 @@ class staffService {
             $staff->recruit_day = $request->input('recruit_day');
             $staff->save();
 
-            $request->session()->flash('success', 'Cập nhật thành công');
+            $request->session()->flash('success', messagesHelper::$EDIT_SUCCESS);
         }
         catch(\exception $e) {
             $request->session()->flash('error', $e->getMessage());

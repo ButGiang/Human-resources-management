@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\discipline;
 use App\Models\staffs;
+use App\Helpers\messagesHelper;
 
 class disciplineService {
     public function getdisciplineList() {
@@ -21,7 +22,7 @@ class disciplineService {
                 'date' => $request->input('date'),
                 'id' => $request->input('staff')
             ]);
-            $request->session()->flash('success', 'Thêm mới thành công!');
+            $request->session()->flash('success', messagesHelper::$CREATE_SUCCESS);
         }
         catch(\exception $e) {
             $request->session()->flash('error', $e->getMessage());
@@ -39,7 +40,7 @@ class disciplineService {
             $discipline->punish = $request->input('punish');
             $discipline->save();
 
-            $request->session()->flash('success', 'Cập nhật thành công');
+            $request->session()->flash('success', messagesHelper::$EDIT_SUCCESS);
         }
         catch(\exception $e) {
             $request->session()->flash('error', $e->getMessage());
