@@ -68,4 +68,40 @@ class positionService {
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }
+
+
+    
+    public function addStaffToPos($department_id, $position_id, $request) {
+        try {
+            $staff = staffs::where('id', $request->staff)->first();
+            $staff->department_id = $department_id;
+            $staff->position_id = $position_id;
+            $staff->degree_id = $request->degree;
+            $staff->save();
+
+            $request->session()->flash('success', messagesHelper::$CREATE_SUCCESS);
+        }
+        catch(\exception $e) {
+            $request->session()->flash('error', $e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function remove($id) {
+        $staff = staffs::where('id', $id)->first();
+
+        if($staff) {
+            $staff->position_id = null;
+            $staff->degree_id = null;
+            $staff->save();
+
+            return true;
+        }
+        return false;
+    }
+
+    public function staffListExport($department_id, $staffs) {
+
+    }
 }

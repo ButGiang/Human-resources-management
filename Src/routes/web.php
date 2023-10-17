@@ -5,10 +5,13 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\authController;
 use \App\Http\Controllers\homeController;
 use \App\Http\Controllers\staffController;
+use \App\Http\Controllers\insuranceController;
 use \App\Http\Controllers\departmentController;
 use \App\Http\Controllers\positionController;
 use \App\Http\Controllers\achievementController;
 use \App\Http\Controllers\disciplineController;
+use \App\Http\Controllers\salaryController;
+
 
 Route::get('login', [authController::class, 'login'])->name('login');
 Route::post('login', [authController::class, 'post_login']);
@@ -17,6 +20,7 @@ Route::post('register', [authController::class, 'post_register']);
 
 
 Route::get('/', [homeController::class, 'index'])->name('dashboard');
+
 
 Route::prefix('staff')->group(function() {
     Route::get('/', [staffController::class, 'index'])->name('staffList');
@@ -30,6 +34,21 @@ Route::prefix('staff')->group(function() {
     Route::get('/updateStatus/{id}', [StaffController::class, 'updateStatus']);
     Route::post('/search', [StaffController::class, 'search']);
 });
+
+
+Route::prefix('insurance')->group(function() {
+    Route::get('/', [insuranceController::class, 'index'])->name('insuranceList');
+
+    Route::get('/add', [insuranceController::class, 'add']);
+    Route::post('/add', [insuranceController::class, 'post_add']);
+
+    Route::get('/edit/{id}', [insuranceController::class, 'edit']);
+    Route::post('/edit/{id}', [insuranceController::class, 'post_edit']);
+
+    Route::post('/search', [insuranceController::class, 'search']);
+    Route::delete('/delete', [insuranceController::class, 'delete']);
+});
+
 
 Route::prefix('department')->group(function() {
     Route::get('/', [departmentController::class, 'index'])->name('departmentList');
@@ -59,10 +78,18 @@ Route::prefix('department')->group(function() {
             Route::get('/', [positionController::class, 'index'])->name('positionList');
             Route::get('/add', [positionController::class, 'add']);
             Route::post('/add', [positionController::class, 'post_add']);      
-            Route::get('/edit/{position_id}', [departmentController::class, 'edit']);
-            Route::post('/edit/{position_id}', [departmentController::class, 'post_edit']);
+            Route::get('/edit/{position_id}', [positionController::class, 'edit']);
+            Route::post('/edit/{position_id}', [positionController::class, 'post_edit']);
             Route::get('/updateStatus/{position_id}', [positionController::class, 'updateStatus']);
-            Route::get('/exportExcel', [positionController::class, 'exportExcel']);
+            Route::post('/search', [positionController::class, 'search']);
+
+            Route::prefix('/detail/{position_id}')->group(function() {
+                Route::get('/', [positionController::class, 'detail'])->name('staffListOfPos');
+                Route::get('/add', [positionController::class, 'addStaffToPos']);
+                Route::post('/add', [positionController::class, 'post_addStaffToPos']);
+                Route::get('/remove/{id}', [positionController::class, 'removeStaffFromPos']);
+                Route::get('/exportExcel', [positionController::class, 'exportExcel']);
+            });
         });
     });
 });
@@ -81,6 +108,7 @@ Route::prefix('achievement')->group(function() {
     Route::post('/search', [achievementController::class, 'search']);
 });
 
+
 Route::prefix('discipline')->group(function() {
     Route::get('/', [disciplineController::class, 'index'])->name('disciplineList');
 
@@ -93,6 +121,21 @@ Route::prefix('discipline')->group(function() {
     Route::delete('/delete', [disciplineController::class, 'delete']);
     Route::post('/search', [disciplineController::class, 'search']);
 });
+
+Route::prefix('salary')->group(function() {
+    Route::get('/', [salaryController::class, 'index'])->name('salaryList');
+
+    Route::prefix('schedule')->group(function() {
+        Route::get('/', [salaryController::class, 'schedule']);
+        Route::get('/add', [salaryController::class, 'add']);
+        Route::post('/add', [salaryController::class, 'post_add']);
+        Route::get('/edit/{discipline_id}', [salaryController::class, 'edit']);
+        Route::post('/edit/{discipline_id}', [salaryController::class, 'post_edit']);
+        Route::delete('/delete', [salaryController::class, 'delete']);
+    });
+});
+
+
 
 
 Route::middleware(['auth'])->group(function() {

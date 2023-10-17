@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
-                    <a href="#" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                    <a href="/salary" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                         <i class="fas fa-wallet"></i>
                         <span class="text-sm ml-2">Lương bổng</span>
                     </a>

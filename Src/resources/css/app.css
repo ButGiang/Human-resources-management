@@ -60,3 +60,19 @@ body {
 .w-1_5 {
   width: 20%;
 }
+
+.h-half {
+  height: 50%;
+}
+
+.w-half {
+  width: 50%;
+}
+
+.w-4 {
+  width: 40%;
+}
+
+.w-6 {
+  width: 60%;
+}

@@ -11,11 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('degree', function (Blueprint $table) {
-            $table->increments('degree_id');
-            $table->string('name', 100)->unique();
-            $table->string('describe', 255);
-        });
+        //
     }
 
     /**
@@ -23,6 +19,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('degree');
+        //
     }
 };

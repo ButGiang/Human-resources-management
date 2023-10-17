@@ -6,9 +6,9 @@
             @csrf
             <div class="mb-4 flex-1">
                 <div class="col-span-1 ml-2">
-                    <label class="block text-sm font-medium text-gray-700" for="staff">Thêm nhân viên cho phòng ban:</label>
+                    <label class="block text-sm font-medium text-gray-700" for="staff">Thêm nhân viên cho chức vụ:</label>
                     <div class="flex items-center mt-3">
-                        <div class="min-w-[220px] font-bold">{{ $department->name }}</div>
+                        <div class="min-w-[220px] font-bold">{{ $position->value('name') }}</div>
                     </div>
                 </div>
 
@@ -21,20 +21,6 @@
                                 @foreach ($staffs as $staff)
                                     <option value="{{ $staff->id }}">
                                         {{ $staff->first_name. ' '. $staff->last_name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-span-1 ml-2">
-                        <div class="flex items-center mt-3">
-                            <select name="position" 
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                                <option value="" selected hidden readonly>Chọn Chức vụ</option>
-                                @foreach ($positions as $position)
-                                    <option value="{{ $position->position_id }}">
-                                        {{ $position->name }}
                                     </option>
                                 @endforeach
                             </select>

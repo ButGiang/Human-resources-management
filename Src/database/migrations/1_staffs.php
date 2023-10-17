@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('avatar', 255);
             $table->date('recruit_day');
             $table->integer('active')->length(1);
-            $table->timestamps();
             $table->integer('department_id')->unsigned()->nullable();
             $table->integer('position_id')->unsigned()->nullable();
             $table->integer('degree_id')->unsigned()->nullable();

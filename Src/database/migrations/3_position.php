@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('position', function (Blueprint $table) {
             $table->increments('position_id');
             $table->string('name', 100)->unique();
-            $table->string('describe', 255);
-            $table->timestamps();
+            $table->string('active', 1);
             $table->integer('department_id')->unsigned();
         });
 

@@ -18,7 +18,7 @@ class achievementHelper {
                             <i class="fas fa-edit"></i>
                         </a>
                         <a onclick="RemoveRow('. $achievement->achievement_id .', \'/achievement/delete\')"
-                        class="inline-flex items-center justify-center px-2 py-2 text-white bg-red border border-transparent rounded-md">
+                        class="inline-flex items-center justify-center px-2 py-2 text-white bg-red border border-transparent rounded-md cursor-pointer">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

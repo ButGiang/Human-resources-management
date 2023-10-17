@@ -20,6 +20,8 @@ class department extends Model
         'manager_id'
     ];
 
+    public $timestamps = false;
+
     public function manager() {
         return $this->hasOne(staffs::class, 'id', 'manager_id')->withDefault(['first_name' => '', 'last_name' => '']);
     }
