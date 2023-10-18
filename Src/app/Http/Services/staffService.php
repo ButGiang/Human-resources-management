@@ -62,7 +62,6 @@ class staffService {
             $newStatus = $currentStatus === 1 ? 0 : 1;
 
             $staff->update(['active' => $newStatus]);
-    
             return response()->json(['success' => true, 'active' => $newStatus]);
         }
         catch(\exception $e) {

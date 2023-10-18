@@ -27,6 +27,7 @@ class staffs extends Model
         'degree_id'
     ];
 
+    public $timestamps = false;
 
     public function department() {
         return $this->hasOne(department::class, 'department_id', 'department_id')->withDefault(['name' => '']);
