@@ -25,4 +25,8 @@ class discipline extends Model
     public function staff() {
         return $this->hasOne(staffs::class, 'id', 'id')->withDefault(['first_name' => '', 'last_name' => '']);
     }
+
+    public function getTotal($id, $month) {
+        return discipline::where('id', $id)->whereMonth('date', $month)->sum('punish');
+    }
 }

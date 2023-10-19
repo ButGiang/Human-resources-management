@@ -2,36 +2,47 @@
 
 @section('content') 
     <div class="h-screen flex">
-        <div class="bg-white p-8 rounded-md w-4 h-full">
+        <div class="bg-white p-8 rounded-md w-half h-full">
             <div class="flex items-center justify-between pb-6">
                 <div>
-                    <h2 class="text-gray-600 mt-3 font-semibold">Bảng lương cứng của mỗi ngành nghề:</h2>
+                    <h2 class="text-gray-600 font-semibold">Danh mục lương:</h2>
                 </div>
+
+                <form action="/salary/schedule/add" method="get">
+                    @csrf
+                    <button type="submit" 
+                    class="bg-blue-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                        Thêm
+                    </button>
+                </form>
             </div>
 
             <div>
-                <div class="-mx-4 px-4 mt-2 py-4 overflow-x-auto">
+                <div class="-mx-4 px-4 py-4 overflow-x-auto">
                     <div class="inline-block w-full shadow rounded-lg overflow-hidden">
                         <table class="w-full leading-normal">
                             <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-yellow text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-cyan text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                         STT
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-yellow text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-cyan text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                         Tên chức vụ
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-yellow text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-cyan text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                         Lương cứng
+                                    </th>
+                                    <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-cyan text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     </th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {!! \App\Helpers\salaryHelper::salarySchedule($salarySchedules) !!}
+                                {!! \App\Helpers\salaryHelper::salarySchedule($salarySchedule) !!}
                             </tbody>
                         </table>
 
@@ -60,14 +71,14 @@
 
         <div class="border-t border-gray"></div>
 
-        <div class="bg-white p-8 rounded-md w-6 h-full">
+        <div class="bg-white p-8 rounded-md w-half h-full">
             <div class=" flex items-center justify-between pb-6">
                 <div>
-                    <h2 class="text-gray-600 font-semibold">Lương thưởng của nhân viên</h2>
+                    <h2 class="text-gray-600 font-semibold">Bảng lương tháng {{ $month }}</h2>
                 </div>
 
                 {{-- navbar --}}
-                <div class="flex lg:ml-40 ml-10 space-x-8">
+                <div class="flex ml-10 space-x-8">
                     {{-- search --}}
                     <form action="/salary/search" method="POST">
                         @csrf
@@ -83,45 +94,54 @@
                             </div>
                         </div>
                     </form>
-
-                    {{-- add --}}
-                    <form action="/salary/add" method="get">
-                        @csrf
-                        <button type="submit" class="bg-blue-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
-                            Thêm
-                        </button>
-                    </form>
-
-                    {{-- reload --}}
-                    <button onclick="reloadPage()" class="bg-green-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
-                        <i class="fas fa-sync"></i>
-                    </button>
                 </div>
             </div>
 
-            <div>
+            <div class=" flex items-center justify-between pb-6">
+                <form action="#" method="get">
+                    @csrf
+                    <div class="inline-flex">
+                        <select 
+                        class="bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            @for($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}">Tháng {{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                </form>
+
+                <form action="/salary/caculate/{{ $month }}" method="POST">
+                    @csrf
+                    <button type="submit" 
+                    class="bg-blue-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                        Cập nhật lương
+                    </button>
+                </form>
+            </div>
+
+            <div style="margin-top: -9px">
                 <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                     <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
                         <table class="min-w-full leading-normal">
                             <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-skyblue text-left text-xs font-semibold text-white uppercase tracking-wider">
-                                        STT
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-orange text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Mã NV
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-skyblue text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-orange text-left text-xs font-semibold text-white uppercase tracking-wider">
                                         Họ & Tên
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-skyblue text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-orange text-left text-xs font-semibold text-white uppercase tracking-wider">
                                         Số tiền
                                     </th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {!! \App\Helpers\salaryHelper::salary_list($salarys) !!}
+                                {!! \App\Helpers\salaryHelper::salary_list($salaryList) !!}
                             </tbody>
                         </table>
 

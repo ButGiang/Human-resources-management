@@ -5,28 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class achievement extends Model
+class salary extends Model
 {
     use HasFactory;
-    protected $table = "achievement";
-    protected $primaryKey = 'achievement_id';
+
+    protected $table = "salary";
+    protected $primaryKey = 'salary_id';
 
     protected $fillable = [
-        'name',
-        'date',
-        'describe',
-        'image',
-        'reward',
-        'id'
+        'salary_id',
+        'money',
+        'id',
+        'date'
     ];
 
     public $timestamps = false;
     
     public function staff() {
         return $this->hasOne(staffs::class, 'id', 'id')->withDefault(['first_name' => '', 'last_name' => '']);
-    }
-
-    public function getTotal($id, $month) {
-        return achievement::where('id', $id)->whereMonth('date', $month)->sum('reward');
     }
 }

@@ -16,7 +16,7 @@ class salaryHelper {
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <a href="/salary/schedule/edit/'. $salarySchedule->salarySchedule_id .'"
                         class="inline-flex items-center justify-center px-2 py-2 text-white bg-indigo-600 border border-transparent rounded-md">
-                            <i class="fas fa-user-edit"></i>
+                            <i class="fas fa-edit"></i>
                         </a>
 
                         <a onclick="RemoveRow('. $salarySchedule->salarySchedule_id .', \'/salary/schedule/delete\')"

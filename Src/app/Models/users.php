@@ -17,4 +17,6 @@ class users extends Model
         'email',
         'password'
     ];
+
+    public $timestamps = false;
 }

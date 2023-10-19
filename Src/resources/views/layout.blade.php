@@ -4,7 +4,7 @@
   @include('header')
 </head>
 
-<body class="flex h-screen">
+<body class="flex h-screen overflow-hidden">
   @include('sidebar')
 
   <div class="flex-grow overflow-y-auto bg-gray-50">
