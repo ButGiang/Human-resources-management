@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\staffs;
 use App\Models\achievement;
-
+use App\Http\Requests\achievementRequest;
 use App\Http\Services\achievementService;
 
 class achievementController extends Controller
@@ -33,7 +34,7 @@ class achievementController extends Controller
         ]);
     }
 
-    public function post_add(Request $request) {
+    public function post_add(achievementRequest $request) {
         $result = $this->achievement_service->create($request);
 
         if($result) {
@@ -52,7 +53,7 @@ class achievementController extends Controller
         ]);
     }
 
-    public function post_edit(Request $request, $achievement_id) {
+    public function post_edit(achievementRequest $request, $achievement_id) {
         $achievement = achievement::where('achievement_id', $achievement_id)->first();
         $result = $this->achievement_service->update($request, $achievement);
         

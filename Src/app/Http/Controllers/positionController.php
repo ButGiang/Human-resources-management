@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\position_staffRequest;
+use App\Http\Requests\positionRequest;
 use Illuminate\Http\Request;
 
 use App\Models\staffs;
 use App\Models\department;
 use App\Models\position;
 use App\Models\degree;
-
+use Illuminate\Support\Facades\Session;
 use App\Http\Services\positionService;
 
 
@@ -36,7 +38,7 @@ class positionController extends Controller
         ]);
     }
 
-    public function post_add(Request $request, $department_id) {
+    public function post_add(positionRequest $request, $department_id) {
         $result = $this->position_service->create($request, $department_id);
 
         if($result) {
@@ -56,7 +58,7 @@ class positionController extends Controller
         ]);
     }
 
-    public function post_edit(Request $request, $department_id, $position_id) {
+    public function post_edit(positionRequest $request, $department_id, $position_id) {
         $position = position::where('position_id', $position_id)->first();
         $result = $this->position_service->update($request, $position);
         
@@ -113,7 +115,7 @@ class positionController extends Controller
         ]);
     }
 
-    public function post_addStaffToPos($department_id, $position_id, Request $request) {
+    public function post_addStaffToPos($department_id, $position_id, position_staffRequest $request) {
         $result = $this->position_service->addStaffToPos($department_id, $position_id, $request);
 
         if($result) {
@@ -128,16 +130,23 @@ class positionController extends Controller
     }
 
     public function removeStaffFromPos($department_id, $position_id, $id) {
-        $result = $this->position_service->remove($id);
-
-        if($result) {
-            return redirect()->route('staffListOfPos', [
-                'department_id' => $department_id, 
-                'position_id' => $position_id
-            ]);
+        $managers = department::pluck('manager_id')->toArray();
+        if(in_array($id, $managers)) {
+            Session::flash('error', 'Nhân viên hiện đang là trưởng phòng ban, không thể remove');
+            return redirect()->back()->withInput();
         }
         else {
-            return redirect()->back();
+            $result = $this->position_service->remove($id);
+
+            if($result) {
+                return redirect()->route('staffListOfPos', [
+                    'department_id' => $department_id, 
+                    'position_id' => $position_id
+                ]);
+            }
+            else {
+                return redirect()->back();
+            }
         }
     }
 

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 
+
+use Illuminate\Http\Request;
+use App\Http\Requests\salaryScheduleRequest;
 use App\Http\Services\salaryService;
 use Carbon\Carbon;
 
@@ -39,7 +41,7 @@ class salaryController extends Controller
         ]);
     }
 
-    public function post_add(Request $request) {
+    public function post_add(salaryScheduleRequest $request) {
         $result = $this->salary_service->create($request);
 
         if($result) {
@@ -102,7 +104,7 @@ class salaryController extends Controller
     }
 
     public function caculate($month) {
-        $staffs = staffs::orderBy('id', 'asc')->get();
+        $staffs = staffs::where('active', 1)->orderBy('id', 'asc')->get();
         $this->salary_service->caculate($staffs, $month);
 
         return redirect()->route('salaryList');

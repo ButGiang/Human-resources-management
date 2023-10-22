@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\department_staffRequest;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\departmentRequest;
 use App\Models\staffs;
 use App\Models\department;
 use App\Models\position;
 use App\Models\degree;
-
+use Illuminate\Support\Facades\Session;
 use App\Http\Services\departmentService;
 
 
@@ -34,7 +35,7 @@ class departmentController extends Controller
         ]);
     }
 
-    public function post_add(Request $request) {
+    public function post_add(departmentRequest $request) {
         $result = $this->department_service->create($request);
 
         if($result) {
@@ -56,7 +57,7 @@ class departmentController extends Controller
         ]);
     }
 
-    public function post_edit(Request $request, $department_id) {
+    public function post_edit(departmentRequest $request, $department_id) {
         $department = department::where('department_id', $department_id)->first();
         $result = $this->department_service->update($request, $department);
         
@@ -125,7 +126,7 @@ class departmentController extends Controller
         ]);
     }
 
-    public function post_addStaffToDep($department_id, Request $request) {
+    public function post_addStaffToDep($department_id, department_staffRequest $request) {
         $result = $this->department_service->addStaffToDep($department_id, $request);
 
         if($result) {
@@ -137,13 +138,20 @@ class departmentController extends Controller
     }
 
     public function removeStaffFromDep($department_id, $id) {
-        $result = $this->department_service->remove($id);
-
-        if($result) {
-            return redirect()->route('staffListOfDep', ['department_id' => $department_id]);
+        $managers = department::pluck('manager_id')->toArray();
+        if(in_array($id, $managers)) {
+            Session::flash('error', 'Nhân viên hiện đang là trưởng phòng ban, không thể remove');
+            return redirect()->back()->withInput();
         }
         else {
-            return redirect()->back();
+            $result = $this->department_service->remove($id);
+
+            if($result) {
+                return redirect()->route('staffListOfDep', ['department_id' => $department_id]);
+            }
+            else {
+                return redirect()->back();
+            }
         }
     }
 

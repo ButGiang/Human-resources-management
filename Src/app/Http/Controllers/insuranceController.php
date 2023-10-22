@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Http\Services\insuranceService;
-
+use App\Http\Requests\insuranceRequest;
 use App\Models\insurance;
 
 class insuranceController extends Controller
@@ -30,7 +31,7 @@ class insuranceController extends Controller
         ]);
     }
 
-    public function post_add(Request $request) {
+    public function post_add(insuranceRequest $request) {
         $result = $this->insurance_service->create($request);
 
         if($result) {
@@ -50,7 +51,7 @@ class insuranceController extends Controller
         ]);
     }
 
-    public function post_edit(Request $request, $id) {
+    public function post_edit(insuranceRequest $request, $id) {
         $insurance = insurance::where('id', $id)->first();
         $result = $this->insurance_service->update($request, $insurance);
         

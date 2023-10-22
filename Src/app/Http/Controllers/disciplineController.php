@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\staffs;
 use App\Models\discipline;
-
+use App\Http\Requests\disciplineRequest;
 use App\Http\Services\disciplineService;
 
 class disciplineController extends Controller
@@ -33,7 +34,7 @@ class disciplineController extends Controller
         ]);
     }
 
-    public function post_add(Request $request) {
+    public function post_add(disciplineRequest $request) {
         $result = $this->discipline_service->create($request);
 
         if($result) {
@@ -53,7 +54,7 @@ class disciplineController extends Controller
         ]);
     }
 
-    public function post_edit(Request $request, $discipline_id) {
+    public function post_edit(disciplineRequest $request, $discipline_id) {
         $discipline = discipline::where('discipline_id', $discipline_id)->first();
         $result = $this->discipline_service->update($request, $discipline);
         
