@@ -8,6 +8,8 @@ class MessagesHelper {
     public static string $LOGIN_FAIL = 'Email hoặc Password không đúng! Vui lòng thử lại.';
     public static string $INACTIVE_FAIL = 'Nhân viên hiện đang là trưởng phòng ban, không thể in-active.';
     public static string $REMOVE_FAIL = 'Nhân viên hiện đang là trưởng phòng ban, không thể remove.';
+    public static string $INACTIVE_DEP_FAIL = 'Phòng ban vẫn còn nhân viên hoạt động, không thể in-active.';
+    public static string $INACTIVE_POS_FAIL = 'Hiện vẫn còn nhân viên đang làm việc ở vị trí này, không thể in-active.';
     public static string $CREATE_SUCCESS = 'Thêm mới thành công.';
     public static string $EDIT_SUCCESS = 'Chỉnh sửa thành công.';
     public static string $UPDATE_SUCCESS = 'Cập nhật thành công.';

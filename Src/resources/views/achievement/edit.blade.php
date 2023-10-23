@@ -40,7 +40,14 @@
                         <div class="form-group col-span-4 md:col-span-4">
                             <input type="file" id="upload" name="image" 
                             class="block w-full px-2 py-2 mt-1 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                            <div id="image_show">
+                                <a href="{{ $achievement->image }}">
+                                    <img src="{{ $achievement->image }}" width="100px" height="120px" style="margin-top: 5px">
+                                </a>
+                            </div>
+                            <input type="hidden" name="avatar" id="file" value="{{ $achievement->image }}">
                         </div>
+                        
                     </div>
 
                     <div class="col-span-1">

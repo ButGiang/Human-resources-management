@@ -82,7 +82,7 @@ class departmentController extends Controller
     public function updateStatus($department_id) {
         $haveStaffInDep = staffs::pluck('department_id')->toArray();
         if(in_array($department_id, $haveStaffInDep)) {
-            Session::flash('error', messagesHelper::$INACTIVE_FAIL);
+            Session::flash('error', messagesHelper::$INACTIVE_DEP_FAIL);
             return redirect()->back();
         }
 

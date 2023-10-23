@@ -38,4 +38,31 @@
         }
     }
 
+    // upload file
+    $('#upload').change(function() {
+        const form = new FormData()
+        form.append('file', $(this)[0].files[0])
+
+        $.ajax({
+            processData: false,
+            contentType: false,
+            type: 'post',
+            datatype: 'JSON',
+            data: form,
+            url: url,
+
+            success: function(result) {
+                if(!result.error) {
+                    $('#image_show').html(
+                        '<a href="' + result.url + '" target="_blank">' +
+                            '<img src="' + result.url + '" width="100px"></img></a>')
+
+                    $('#file').val(result.url);
+                }
+                else {
+                    alert('Upload file thất bại!')
+                }
+            }
+        })
+    })
 </script>

@@ -84,7 +84,7 @@ class positionController extends Controller
     public function updateStatus($department_id, $position_id) {
         $haveStaffInPos = staffs::pluck('position_id')->toArray();
         if(in_array($position_id, $haveStaffInPos)) {
-            Session::flash('error', messagesHelper::$INACTIVE_FAIL);
+            Session::flash('error', messagesHelper::$INACTIVE_POS_FAIL);
             return redirect()->back();
         }
 

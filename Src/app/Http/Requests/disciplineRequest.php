@@ -15,7 +15,6 @@ class disciplineRequest extends FormRequest
     public function rules()
     {
         return [
-            'staff' => 'required',
             'name' => 'required',
             'date' => 'required|date|before_or_equal:' . Carbon::now()->format('Y-m-d'),
             'punish' => 'required|numeric|min:10000'
