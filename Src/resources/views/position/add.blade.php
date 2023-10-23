@@ -7,7 +7,7 @@
             <div class="mb-4">
                     <div class="w-full">
                         <label class="block text-sm font-medium text-gray-700">Tên chức vụ</label>
-                        <input type="text" name="name" 
+                        <input type="text" name="name" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter name">
                     </div>
 

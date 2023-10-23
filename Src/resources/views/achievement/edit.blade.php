@@ -8,7 +8,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Tên thành tựu</label>
-                        <input type="text" name="name" 
+                        <input type="text" name="name" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" placeholder="Enter name" value="{{ $achievement->name }}">
                     </div>
 
@@ -29,7 +29,7 @@
 
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Phần thưởng (đồng)</label>
-                        <input type="text" name="reward" 
+                        <input type="number" name="reward" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" placeholder="Enter reward" value="{{ $achievement->reward }}">
                     </div>
                 </div>
@@ -45,7 +45,7 @@
 
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Ngày</label>
-                        <input type="date" name="date" 
+                        <input type="date" name="date" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-md" 
                         value="{{ $achievement->date }}">
                     </div>

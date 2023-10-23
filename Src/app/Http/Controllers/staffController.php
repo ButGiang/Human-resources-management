@@ -7,11 +7,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\staffRequest;
 use App\Http\Services\staffService;
-
+use App\Helpers\messagesHelper;
 use App\Models\staffs;
 use App\Models\department;
-
-use function Laravel\Prompts\alert;
 
 class staffController extends Controller
 {
@@ -68,7 +66,7 @@ class staffController extends Controller
     public function updateStatus(staffs $id) {
         $managers = department::pluck('manager_id')->toArray();
         if(in_array($id->id, $managers)) {
-            Session::flash('error', 'Nhân viên hiện đang là trưởng phòng ban, không thể in-active');
+            Session::flash('error', messagesHelper::$INACTIVE_FAIL);
             return redirect()->back()->withInput();
         }
         else {

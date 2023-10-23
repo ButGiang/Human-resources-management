@@ -15,7 +15,7 @@
                 <div class="grid grid-cols-3 gap-4 mt-8">
                     <div class="col-span-1 ml-2">
                         <div class="flex items-center mt-3">
-                            <select name="staff" 
+                            <select name="staff" required
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="" selected hidden readonly>Chọn Nhân viên</option>
                                 @foreach ($staffs as $staff)

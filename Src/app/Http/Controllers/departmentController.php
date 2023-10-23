@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\department_staffRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\departmentRequest;
+use Illuminate\Support\Facades\Session;
+use App\Http\Services\departmentService;
+use App\Helpers\messagesHelper;
+
 use App\Models\staffs;
 use App\Models\department;
 use App\Models\position;
 use App\Models\degree;
-use Illuminate\Support\Facades\Session;
-use App\Http\Services\departmentService;
-
 
 class departmentController extends Controller
 {
@@ -48,7 +49,7 @@ class departmentController extends Controller
 
     public function edit($department_id) {
         $department = department::where('department_id', $department_id)->first();
-        $staffs = staffs::whereNotIn('id', [$department->manager_id])->get();
+        $staffs = staffs::where('department_id', $department_id)->whereNotIn('id', [$department->manager_id])->where('active', 1)->get();
 
         return view('department.edit', [
             'title' => 'Phòng ban-Chỉnh sửa',
@@ -79,6 +80,12 @@ class departmentController extends Controller
     }
 
     public function updateStatus($department_id) {
+        $haveStaffInDep = staffs::pluck('department_id')->toArray();
+        if(in_array($department_id, $haveStaffInDep)) {
+            Session::flash('error', messagesHelper::$INACTIVE_FAIL);
+            return redirect()->back();
+        }
+
         $this->department_service->updateStatus($department_id);
 
         return redirect()->route('departmentList');
@@ -89,7 +96,7 @@ class departmentController extends Controller
         $managerId = $request->input('manager_id');
 
         Department::where('department_id', $departmentId)->update(['manager_id' => $managerId]);
-        return response('Cập nhật thành công!');
+        return response(messagesHelper::$UPDATE_SUCCESS);
     }
 
 
@@ -140,7 +147,7 @@ class departmentController extends Controller
     public function removeStaffFromDep($department_id, $id) {
         $managers = department::pluck('manager_id')->toArray();
         if(in_array($id, $managers)) {
-            Session::flash('error', 'Nhân viên hiện đang là trưởng phòng ban, không thể remove');
+            Session::flash('error', messagesHelper::$REMOVE_FAIL);
             return redirect()->back()->withInput();
         }
         else {

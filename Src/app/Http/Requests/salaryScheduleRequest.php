@@ -15,7 +15,7 @@ class salaryScheduleRequest extends FormRequest
     {
         return [
             'position' => 'required',
-            'money' => 'required|numeric|between:1000000, 50000000',
+            'money' => 'required|numeric|minn:3000000',
         ];
     }
 }

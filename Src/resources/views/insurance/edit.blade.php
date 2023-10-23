@@ -15,13 +15,13 @@
 
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Mã bảo hiểm</label>
-                        <input type="number" name="insurance_id" 
+                        <input type="number" name="insurance_id" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter surname" value="{{ $insurance->insurance_id }}">
                     </div>
 
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Ngày đăng ký</label>
-                        <input type="date" name="registration_date" 
+                        <input type="date" name="registration_date" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" value="{{ $insurance->registration_date }}">
                     </div>
 
@@ -30,13 +30,13 @@
                 <div class="grid grid-cols-2 gap-4 mt-8">
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Nơi đăng ký</label>
-                        <input type="text" name="register_place" 
+                        <input type="text" name="register_place" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter register place" value="{{ $insurance->register_place }}">
                     </div>
 
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Nơi khám bệnh</label>
-                        <input type="text" name="hospital" 
+                        <input type="text" name="hospital" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter hospital" value="{{ $insurance->hospital }}">
                     </div>
                 </div>

@@ -9,7 +9,7 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Tên chức vụ</label>
                         <div class="flex items-center mt-3">
-                            <select name="position" 
+                            <select name="position" required
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="" selected hidden readonly>Chọn Chức vụ</option>
                                 @foreach ($positions as $position)
@@ -23,7 +23,7 @@
 
                     <div class="col-span-1 ml-2">
                         <label class="block text-sm font-medium text-gray-700" for="staff">Tiền lương:</label>
-                        <input type="number" name="money" 
+                        <input type="number" name="money" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter salary" value="{{ old('money') }}">
                     </div>
                 </div>

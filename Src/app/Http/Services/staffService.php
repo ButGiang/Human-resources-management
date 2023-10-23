@@ -8,7 +8,7 @@ use App\Models\staffs;
 
 class staffService {
     public function getStaffList() {
-        return staffs::with('department')->with('position')->with('degree')->orderBy('id', 'asc')->paginate(10);
+        return staffs::with('department')->with('position')->with('degree')->orderBy('active', 'desc')->paginate(10);
     }
 
     public function create($request) {

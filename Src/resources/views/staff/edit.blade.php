@@ -9,13 +9,13 @@
             <div class="grid grid-cols-2 gap-4">
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Họ và tên đệm</label>
-                    <input type="text" name="first_name" 
+                    <input type="text" name="first_name" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter surname" value="{{ $staff->first_name }}">
                 </div>
 
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Tên</label>
-                    <input type="text" name="last_name" 
+                    <input type="text" name="last_name" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter name" value="{{ $staff->last_name }}">
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="grid grid-cols-2 gap-4 mt-8">
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Ngày sinh</label>
-                    <input type="date" name="birthday" 
+                    <input type="date" name="birthday" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" value="{{ $staff->birthday }}">
                 </div>
 
@@ -45,19 +45,19 @@
             <div class="grid grid-cols-3 gap-4 mt-8">
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Căn cước công dân</label>
-                    <input type="number" name="CCCD" 
+                    <input type="number" name="CCCD" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter CCCD" value="{{ $staff->CCCD }}">
                 </div>
 
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" name="email" 
+                    <input type="email" name="email" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter email" value="{{ $staff->email }}">
                 </div>
 
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Số điện thoại</label>
-                    <input type="number" name="phone" 
+                    <input type="number" name="phone" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter phone number" value="{{ $staff->phone }}">
                 </div>
             </div>
@@ -65,13 +65,13 @@
             <div class="grid grid-cols-2 gap-4 mt-8">
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Địa chỉ</label>
-                    <input type="text" name="address" 
+                    <input type="text" name="address" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Enter address" value="{{ $staff->address }}">
                 </div>
 
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Ngày tuyển dụng</label>
-                    <input type="date" name="recruit_day" 
+                    <input type="date" name="recruit_day" required
                     class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" 
                     value="{{ $staff->recruit_day }}">
                 </div>

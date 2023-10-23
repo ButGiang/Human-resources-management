@@ -18,7 +18,7 @@ class achievementRequest extends FormRequest
             'staff' => 'required',
             'name' => 'required',
             'date' => 'required|date|before_or_equal:' . Carbon::now()->format('Y-m-d'),
-            'reward' => 'required|numeric'
+            'reward' => 'required|numeric|min:100000'
         ];
     }
 }

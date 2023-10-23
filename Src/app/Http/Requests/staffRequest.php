@@ -19,7 +19,7 @@ class staffRequest extends FormRequest
             'last_name' => 'required|string|max:50',
             'birthday' => 'required|date|before:' . Carbon::now()->subYears(18)->format('Y-m-d'),
             'gender' => 'required',
-            'CCCD' => 'required|numeric',
+            'CCCD' => 'required|numeric|unique:staffs',
             'phone' => 'required|numeric',
             'address' => 'required|string|max:255',
             'email' => 'required|email|unique:staffs',

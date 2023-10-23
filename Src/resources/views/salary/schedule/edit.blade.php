@@ -15,7 +15,7 @@
 
                     <div class="col-span-1 ml-2">
                         <label class="block text-sm font-medium text-gray-700" for="staff">Tiền lương:</label>
-                        <input type="number" name="money" 
+                        <input type="number" name="money" required
                         class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" 
                         placeholder="Enter salary" value="{{ $salarySchedule->money }}">
                     </div>

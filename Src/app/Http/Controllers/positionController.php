@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\position_staffRequest;
 use App\Http\Requests\positionRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Http\Services\positionService;
+use App\Helpers\messagesHelper;
 
 use App\Models\staffs;
 use App\Models\department;
 use App\Models\position;
 use App\Models\degree;
-use Illuminate\Support\Facades\Session;
-use App\Http\Services\positionService;
-
 
 class positionController extends Controller
 {
@@ -82,6 +82,12 @@ class positionController extends Controller
     }
 
     public function updateStatus($department_id, $position_id) {
+        $haveStaffInPos = staffs::pluck('position_id')->toArray();
+        if(in_array($position_id, $haveStaffInPos)) {
+            Session::flash('error', messagesHelper::$INACTIVE_FAIL);
+            return redirect()->back();
+        }
+
         $this->position_service->updateStatus($position_id);
 
         return redirect()->route('positionList', ['department_id' => $department_id]);
@@ -132,7 +138,7 @@ class positionController extends Controller
     public function removeStaffFromPos($department_id, $position_id, $id) {
         $managers = department::pluck('manager_id')->toArray();
         if(in_array($id, $managers)) {
-            Session::flash('error', 'Nhân viên hiện đang là trưởng phòng ban, không thể remove');
+            Session::flash('error', messagesHelper::$REMOVE_FAIL);
             return redirect()->back()->withInput();
         }
         else {
