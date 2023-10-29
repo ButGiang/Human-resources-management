@@ -11,13 +11,13 @@ class achievementService {
         return achievement::orderBy('achievement_id ', 'asc')->paginate(10);
     }
 
-    public function create($request) {
+    public function create($request, $fileName) {
         try {
             achievement::create([
                 'name' => $request->input('name'),
                 'date' => $request->input('date'),
                 'describe' => $request->input('describe'),
-                'image' => $request->input('image'),
+                'image' => $fileName,
                 'reward' => $request->input('reward'),
                 'date' => $request->input('date'),
                 'id' => $request->input('staff')

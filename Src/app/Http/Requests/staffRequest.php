@@ -23,7 +23,9 @@ class staffRequest extends FormRequest
             'phone' => 'required|numeric',
             'address' => 'required|string|max:255',
             'email' => 'required|email|unique:staffs',
-            'recruit_day' => 'required|date|before_or_equal:' . Carbon::now()->format('Y-m-d'),
+            'recruit_day' => 'required|date|before_or_equal:' . Carbon::now()->format('Y-m-d') .
+            '|after_or_equal:' . Carbon::now()->subYears(18)->format('Y-m-d'),
         ];
     }
+    
 }

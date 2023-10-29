@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-8">
+                <div class="grid grid-cols-2 gap-4 mt-6">
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Hình ảnh</label>
                         <div class="form-group col-span-4 md:col-span-4">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="mt-8 flex justify-between">
+                <div class="mt-4 flex justify-between">
                     <button type="button" onclick="goBack()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
                         Back
                     </button>

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="flex items-center justify-center h-screen">
+    <div class="flex items-center justify-center h-screen" enctype="multipart/form-data">
         <form action="" method="POST" class="w-4/5 h-4/5 p-8 bg-white shadow-md border border-gray-300 rounded-lg">
             @csrf
             <div class="mb-4">
@@ -34,20 +34,14 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-8">
+                <div class="grid grid-cols-2 gap-4 mt-6">
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Hình ảnh</label>
                         <div class="form-group col-span-4 md:col-span-4">
-                            <input type="file" id="upload" name="image" 
+                            <input type="file" name="image" 
                             class="block w-full px-2 py-2 mt-1 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-                            <div id="image_show">
-                                <a href="{{ $achievement->image }}">
-                                    <img src="{{ $achievement->image }}" width="100px" height="120px" style="margin-top: 5px">
-                                </a>
-                            </div>
-                            <input type="hidden" name="avatar" id="file" value="{{ $achievement->image }}">
-                        </div>
-                        
+                            <img src="{{ $achievement->image }}" style="width: 120px; height: 120px; margin-top: 12px;">
+                        </div>   
                     </div>
 
                     <div class="col-span-1">
@@ -58,7 +52,7 @@
                     </div>
                 </div>
 
-                <div class="mt-8 flex justify-between">
+                <div class="mt-4 flex justify-between">
                     <button type="button" onclick="goBack()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
                         Back
                     </button>
