@@ -11,13 +11,13 @@ class disciplineService {
         return discipline::orderBy('discipline_id ', 'asc')->paginate(10);
     }
 
-    public function create($request) {
+    public function create($request, $fileName) {
         try {
             discipline::create([
                 'name' => $request->input('name'),
                 'date' => $request->input('date'),
                 'describe' => $request->input('describe'),
-                'image' => $request->input('image'),
+                'image' => $fileName,
                 'punish' => $request->input('punish'),
                 'date' => $request->input('date'),
                 'id' => $request->input('staff')

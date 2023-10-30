@@ -35,7 +35,13 @@ class disciplineController extends Controller
     }
 
     public function post_add(disciplineRequest $request) {
-        $result = $this->discipline_service->create($request);
+        $fileName = '';
+        if($request->hasFile('image')) {
+            $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->name. '.' . $request->image->extension();
+            $request->image->move(public_path('/assets/img/'), $fileName); 
+        }
+
+        $result = $this->discipline_service->create($request, $fileName);
 
         if($result) {
             return redirect()->route('disciplineList');

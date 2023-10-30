@@ -41,7 +41,7 @@
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Hình ảnh</label>
                         <div class="form-group col-span-4 md:col-span-4">
-                            <input type="file" id="upload" name="image" 
+                            <input type="file" name="image" 
                             class="block w-full px-2 py-2 mt-1 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
                         </div>
                     </div>

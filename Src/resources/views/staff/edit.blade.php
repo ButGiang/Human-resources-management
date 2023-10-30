@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="grid grid-cols-3 gap-4 mt-8">
                 <div class="col-span-1">
                     <label class="block text-sm font-medium text-gray-700">Ngày sinh</label>
                     <input type="date" name="birthday" required
@@ -39,6 +39,13 @@
                             <span class="ml-2">Nữ</span>
                         </label>
                     </div>
+                </div>
+
+                <div class="col-span-1">
+                    <label class="block text-sm font-medium text-gray-700">Ngày tuyển dụng</label>
+                    <input type="date" name="recruit_day" required
+                    class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" 
+                    value="{{ $staff->recruit_day }}">
                 </div>
             </div>
 
@@ -70,10 +77,12 @@
                 </div>
 
                 <div class="col-span-1">
-                    <label class="block text-sm font-medium text-gray-700">Ngày tuyển dụng</label>
-                    <input type="date" name="recruit_day" required
-                    class="p-1 mt-3 block w-full border-gray-300 rounded-md shadow-sm" 
-                    value="{{ $staff->recruit_day }}">
+                    <label class="block text-sm font-medium text-gray-700">Avatar</label>
+                    <div class="form-group col-span-4 md:col-span-4">
+                        <input type="file" name="image" 
+                        class="block w-full px-2 py-2 mt-1 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                        <img src="{{ $staff->avatar }}" style="width: 120px; height: 120px; margin-top: 12px;">
+                    </div>   
                 </div>
             </div>
 

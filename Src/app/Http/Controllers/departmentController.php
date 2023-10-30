@@ -8,6 +8,8 @@ use App\Http\Requests\departmentRequest;
 use Illuminate\Support\Facades\Session;
 use App\Http\Services\departmentService;
 use App\Helpers\messagesHelper;
+use App\Exports\dep_staffList;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\staffs;
 use App\Models\department;
@@ -163,8 +165,6 @@ class departmentController extends Controller
     }
 
     public function exportExcel($department_id) {
-        $staffs = staffs::select('id','first_name','last_name')->with('position', 'degree')->where('department_id', $department_id)->get();
-
-        $this->department_service->staffListExport($department_id, $staffs);
+        return Excel::download(new dep_staffList, 'staffs.xlsx');
     }
 }

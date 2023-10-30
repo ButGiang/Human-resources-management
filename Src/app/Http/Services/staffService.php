@@ -11,7 +11,7 @@ class staffService {
         return staffs::with('department')->with('position')->with('degree')->orderBy('active', 'desc')->paginate(10);
     }
 
-    public function create($request) {
+    public function create($request, $fileName) {
         try {
             staffs::create([
                 'first_name' => $request->input('first_name'),
@@ -23,6 +23,7 @@ class staffService {
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
                 'recruit_day' => $request->input('recruit_day'),
+                'avatar' => $fileName
             ]);
             $request->session()->flash('success', messagesHelper::$CREATE_SUCCESS);
         }

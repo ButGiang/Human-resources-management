@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-8">
+                <div class="grid grid-cols-3 gap-4 mt-8">
                     <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700">Ngày sinh</label>
                         <input type="date" name="birthday" required
@@ -37,6 +37,14 @@
                                 <input type="radio" name="gender" value="0" class="form-radio border-gray-300 shadow-sm">
                                 <span class="ml-2">Nữ</span>
                             </label>
+                        </div>
+                    </div>
+
+                    <div class="col-span-1">
+                        <label class="block text-sm font-medium text-gray-700">Avatar</label>
+                        <div class="form-group col-span-4 md:col-span-4">
+                            <input type="file" name="image" 
+                            class="block w-full px-2 py-2 mt-1 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
                         </div>
                     </div>
                 </div>
