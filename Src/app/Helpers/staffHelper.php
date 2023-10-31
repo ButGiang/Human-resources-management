@@ -51,6 +51,10 @@ class staffHelper {
                         class="inline-flex items-center justify-center px-2 py-2 text-white bg-indigo-600 border border-transparent rounded-md">
                             <i class="fas fa-user-edit"></i>
                         </a>
+                        <a href="/staff/experience/'. $staff->id .'"
+                        class="inline-flex items-center justify-center px-2 py-2 text-white bg-blue-500 border border-transparent rounded-md">
+                            <i class="fas fa-eye"></i>
+                        </a>
                     </td>
                 </tr>
             ';

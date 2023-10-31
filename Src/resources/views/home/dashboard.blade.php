@@ -2,6 +2,6 @@
 
 @section('content') 
 
-    <h1>Hello world</h1>
+<h1 class="flex justify-center items-center"> DASHBOARD</h1>
 
 @endsection
