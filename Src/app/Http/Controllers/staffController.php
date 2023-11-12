@@ -36,7 +36,7 @@ class staffController extends Controller
     public function post_add(staffRequest $request) {
         $fileName = '';
         if($request->hasFile('image')) {
-            $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->name. '.' . $request->image->extension();
+            $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->id. '.' . $request->image->extension();
             $request->image->move(public_path('/assets/img/'), $fileName); 
         }
 
@@ -58,7 +58,13 @@ class staffController extends Controller
         ]);
     }
 
-    public function post_edit(staffRequest $request, staffs $id) {
+    public function post_edit(Request $request, staffs $id) {
+        $this->validate($request, [
+            'birthday' => 'required|date|before:' . Carbon::now()->subYears(18)->format('Y-m-d'),
+            'recruit_day' => 'required|date|before_or_equal:' . Carbon::now()->format('Y-m-d') .
+            '|after_or_equal:' . Carbon::now()->subYears(18)->format('Y-m-d'),
+        ]);
+
         $result = $this->staff_service->update($request, $id);
         
         if($result) {

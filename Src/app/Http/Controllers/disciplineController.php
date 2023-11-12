@@ -40,7 +40,7 @@ class disciplineController extends Controller
             $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->name. '.' . $request->image->extension();
             $request->image->move(public_path('/assets/img/'), $fileName); 
         }
-
+        dd($fileName);
         $result = $this->discipline_service->create($request, $fileName);
 
         if($result) {

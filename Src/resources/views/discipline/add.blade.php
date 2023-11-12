@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="flex items-center justify-center h-screen">
-        <form action="" method="POST" class="w-4/5 h-4/5 p-8 bg-white shadow-md border border-gray-300 rounded-lg">
+        <form action="" method="POST" enctype="multipart/form-data" 
+        class="w-4/5 h-4/5 p-8 bg-white shadow-md border border-gray-300 rounded-lg">
             @csrf
             <div class="mb-4">
                 <div class="grid grid-cols-2 gap-4">

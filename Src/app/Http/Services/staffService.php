@@ -35,6 +35,12 @@ class staffService {
     }
 
     public function update($request, $staff) {
+        $fileName = '';
+        if($request->hasFile('image')) {
+            $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->id. '.' . $request->image->extension();
+            $request->image->move(public_path('/assets/img/'), $fileName); 
+        }
+        
         try{
             $staff->first_name = $request->input('first_name');
             $staff->last_name = $request->input('last_name');
@@ -45,6 +51,7 @@ class staffService {
             $staff->address = $request->input('address');
             $staff->phone = $request->input('phone');
             $staff->recruit_day = $request->input('recruit_day');
+            $staff->avatar = $fileName;
             $staff->save();
 
             $request->session()->flash('success', messagesHelper::$EDIT_SUCCESS);

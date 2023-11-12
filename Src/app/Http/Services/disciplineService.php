@@ -32,11 +32,17 @@ class disciplineService {
     }
 
     public function update($request, $discipline) {
+        $fileName = '';
+        if($request->hasFile('image')) {
+            $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->name. '.' . $request->image->extension();
+            $request->image->move(public_path('/assets/img/'), $fileName); 
+        }
+        
         try{
             $discipline->name = $request->input('name');
             $discipline->describe = $request->input('describe');
             $discipline->date = $request->input('date');
-            $discipline->image = $request->input('image');
+            $discipline->image = $fileName;
             $discipline->punish = $request->input('punish');
             $discipline->save();
 

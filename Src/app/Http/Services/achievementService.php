@@ -32,11 +32,17 @@ class achievementService {
     }
 
     public function update($request, $achievement) {
+        $fileName = '';
+        if($request->hasFile('image')) {
+            $fileName = $request->getSchemeAndHttpHost(). '/assets/img/'. $request->name. '.' . $request->image->extension();
+            $request->image->move(public_path('/assets/img/'), $fileName); 
+        }
+        
         try{
             $achievement->name = $request->input('name');
             $achievement->describe = $request->input('describe');
             $achievement->date = $request->input('date');
-            $achievement->image = $request->input('image');
+            $achievement->image = $fileName;
             $achievement->reward = $request->input('reward');
             $achievement->save();
 
